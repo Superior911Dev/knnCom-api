@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root:Pleumhaker196929@localhost:3306/knncomputer_db"
+}
+
+model Product {
+  id             Int      @id @default(autoincrement())
+  name           String
+  description    String
+  code           String
+  category       String
+  price          Float
+  specifications String   @db.Text
+  date           DateTime
+  status         String
+  shopee         String   @db.Text
+  coverImage     String   @db.VarChar(500)
+  images         String   @db.Text
+}
+
+model User {
+  id       Int      @id @default(autoincrement())
+  username String   @unique
+  password String
+  createdAt DateTime @default(now())
+}
